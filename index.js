@@ -2,8 +2,15 @@ let product= document.querySelector('.product');
 
 
 
+
+
+
 const loadProducts = async (data)=>{
-    
+    removeItems()
+
+    if(data ){
+
+ 
    return  data.map((item)=>{
      const {id, name, Price, ImageUrl} = item;
     const childDiv= document.createElement('div');
@@ -34,28 +41,41 @@ const loadProducts = async (data)=>{
     product.appendChild(childDiv)
  
     })
+}else{
+    loadProducts(DataShop)
+}
 }
 
 
+const removeItems = ()=>{
+    const items = document.querySelectorAll('.item');
 
+    for(let i=0; i<items.length; i++){
+        items[i].remove()
+    }
+}
 
 const colorFilter = document.querySelector("#color-filter");
 const priceFilter = document.querySelector('#price-filter');
 const categoryFilter = document.querySelector('#category-filter');
 
 const colorFilteredProducts = ()=>{
-    if(colorFilter.value == ''){
+  
+         
+   
+    
+   if(colorFilter.value == ''){
         loadProducts(DataShop)
     }else {
-      
+        
         const newData=  DataShop.filter((item)=> item.color===colorFilter.value);
-
+        
         loadProducts(newData)
     }
 
 }
 
-
+loadProducts()
 
 
 colorFilter.addEventListener('change', colorFilteredProducts)
