@@ -1,0 +1,17 @@
+
+.product{
+width: 60%;
+border: 1px solid red;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+}
+
+.item{
+    border: 1px solid black;
+}
+
+img{
+    width: 240px;
+    height: 100%;
+}
